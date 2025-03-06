@@ -1,10 +1,10 @@
-import { useAtomValue } from "jotai";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import { useAtomValue } from 'jotai';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
-import useStep from "../../hooks/useStep";
-import questionsLengthState from "../../stores/questions/questionsLengthState";
-import Button from "../Button";
+import useStep from '../../hooks/useStep';
+import questionsLengthState from '../../stores/survey/questionsLengthState';
+import Button from '../Button';
 
 function ActionButtons() {
   const step = useStep();
@@ -18,7 +18,7 @@ function ActionButtons() {
     <ActionButtonsWrapper>
       {step === 0 || (
         <Button
-          type="TERTIARY"
+          type='TERTIARY'
           onClick={() => {
             navigate(`${step - 1}`);
           }}
@@ -28,16 +28,16 @@ function ActionButtons() {
       )}
       {isLast ? (
         <Button
-          type="PRIMARY"
+          type='PRIMARY'
           onClick={() => {
-            navigate("/done");
+            navigate('/done');
           }}
         >
           제출
         </Button>
       ) : (
         <Button
-          type="PRIMARY"
+          type='PRIMARY'
           onClick={() => {
             navigate(`${step + 1}`);
           }}

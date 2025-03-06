@@ -1,15 +1,19 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import useCurrentAnswer from "../../hooks/useCurrentAnswer";
-import useCurrentQuestion from "../../hooks/useCurrentQuestion";
-import ActionButtons from "../ActionButtons";
-import Body from "../Body";
-import Desc from "../Desc";
-import Title from "../Title";
+import useCurrentAnswer from '../../hooks/useCurrentAnswer';
+import useCurrentQuestion from '../../hooks/useCurrentQuestion';
+import ActionButtons from '../ActionButtons';
+import Body from '../Body';
+import Desc from '../Desc';
+import Title from '../Title';
 
 function QuestionBox() {
   const [answer, setAnswer] = useCurrentAnswer();
   const question = useCurrentQuestion();
+
+  if (!question) {
+    return null;
+  }
 
   return (
     <QuestionBoxWrapper>
