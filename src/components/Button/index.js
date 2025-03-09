@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { PRIMARY, SECONDARY, TERTIARY } from "../../constants/color";
+import { PRIMARY, SECONDARY, TERTIARY } from '../../constants/color';
 
 const colorMap = {
   PRIMARY,
@@ -10,43 +10,45 @@ const colorMap = {
 
 const Button = styled.button`
   padding: 16px 24px;
-  width: 200px;
+  min-width: 200px;
 
   color: ${({ type }) => colorMap[type].BUTTON.DEFAULT.COLOR};
   background: ${({ type }) => colorMap[type].BUTTON.DEFAULT.BACKGROUND};
-
   border-radius: 4px;
-  border: ${({ type }) =>
-    type === "TERTIARY"
-      ? `1px solid ${TERTIARY.BUTTON.DEFAULT.BORDER}`
-      : "none"};
+  border: none;
   font-weight: bold;
+  font-size: 18px;
+  font-size: 18px;
+  border: ${({ type }) =>
+    type === 'TERTIARY'
+      ? `1px solid ${TERTIARY.BUTTON.DEFAULT.BORDER}`
+      : 'none'};
 
   &:hover {
     color: ${({ type }) => colorMap[type].BUTTON.HOVER.COLOR};
     background: ${({ type }) => colorMap[type].BUTTON.HOVER.BACKGROUND};
     border: ${({ type }) =>
-      type === "TERTIARY"
+      type === 'TERTIARY'
         ? `1px solid ${TERTIARY.BUTTON.HOVER.BORDER}`
-        : "none"};
+        : 'none'};
   }
 
   &:active {
     color: ${({ type }) => colorMap[type].BUTTON.PRESSED.COLOR};
     background: ${({ type }) => colorMap[type].BUTTON.PRESSED.BACKGROUND};
     border: ${({ type }) =>
-      type === "TERTIARY"
+      type === 'TERTIARY'
         ? `1px solid ${TERTIARY.BUTTON.PRESSED.BORDER}`
-        : "none"};
+        : 'none'};
   }
 
   &:disabled {
     color: ${({ type }) => colorMap[type].BUTTON.DISABLED.COLOR};
     background: ${({ type }) => colorMap[type].BUTTON.DISABLED.BACKGROUND};
     border: ${({ type }) =>
-      type === "TERTIARY"
+      type === 'TERTIARY'
         ? `1px solid ${TERTIARY.BUTTON.DISABLED.BORDER}`
-        : "none"};
+        : 'none'};
   }
 `;
 
