@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-function Item({ children, onChange }) {
+function Item({ children, checked, onChange }) {
   return (
     <ItemWrapper>
       <label>
-        <input type="checkbox" onChange={onChange} />
+        <input type='checkbox' checked={checked} onChange={onChange} />
         <span />
         <div>{children}</div>
       </label>
@@ -15,7 +15,12 @@ function Item({ children, onChange }) {
 function SelectInput({ answer = [], setAnswer, options }) {
   const handleChange = (isChecked, index) => {
     if (isChecked) {
-      // setAnswers(index 추가)
+      const max = options?.max ?? 1;
+
+      if (answer.length >= max) {
+        return;
+      }
+
       setAnswer([...answer, index]);
     } else {
       // setAnswers(index 제거)
@@ -29,6 +34,7 @@ function SelectInput({ answer = [], setAnswer, options }) {
         return (
           <Item
             key={index}
+            checked={answer.includes(index)}
             onChange={(e) => {
               handleChange(e.target.checked, index);
             }}
@@ -48,11 +54,11 @@ const SelectInputWrapper = styled.div`
 `;
 
 const ItemWrapper = styled.div`
-  input[type="checkbox"] {
+  input[type='checkbox'] {
     display: none;
   }
 
-  input[type="checkbox"] ~ span {
+  input[type='checkbox'] ~ span {
     width: 24px;
     height: 24px;
     border: 3px solid #e2dfdf;
@@ -63,18 +69,18 @@ const ItemWrapper = styled.div`
     margin-right: 10px;
   }
 
-  input[type="checkbox"]:checked ~ span {
+  input[type='checkbox']:checked ~ span {
     border: 8px solid #6542f1;
   }
 
-  input[type="checkbox"] ~ div {
+  input[type='checkbox'] ~ div {
     font-size: 14px;
     line-height: 18px;
     display: inline-block;
     vertical-align: middle;
   }
 
-  input[type="checkbox"]:checked ~ div {
+  input[type='checkbox']:checked ~ div {
     font-weight: bold;
   }
 `;
